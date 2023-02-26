@@ -51,11 +51,14 @@ public_users.get('/title/:title',function (req, res) {
 
 //TASK 5:  Get book review
 public_users.get('/review/:isbn',function (req, res) {
-    let rew  = books[req.params.isbn].reviews;
-    if(rew.lengh>0){
+    console.debug(books)
+    let rew  = books[req.params.isbn]['reviews'];
+    console.debug(rew)
+
+    if(rew){
         res.send(rew);
     }else{
-        res.send("There is no published reviews for this book yet")
+        res.json({message:"There is no published reviews for this book yet"});
     }
 });
 
